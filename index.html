@@ -46,13 +46,16 @@
             <h1>Bank App</h1>
             <a id='logout'href="/login" onclick="logout(event)">Logout</a>
         </header>
-        <section>
+        <section id="boardTitleSection">
             <h2 id="boardTitle">Balance: <span id="balance"></span><span id="currency"></span></h2>
         </section>
         <main id="board">
             <h2 id="description"></h2>
             <section>
-                <h2>Transactions</h2>
+                <header>
+                    <h2>Transactions</h2>
+                    <button id="newTransactionBtn">Add Transaction</button>
+                </header>
                 <table>
                     <thead>
                         <tr>
