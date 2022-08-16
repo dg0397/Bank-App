@@ -123,6 +123,14 @@ async function refresh() {
     await updateAccountData();
   }
   updateTransactions();
+  addPopup()
+  document.getElementById('closePupup').addEventListener('click',()=>{
+    document.getElementById('popupContainer').style.display = 'none';
+  })
+  document.getElementById('newTransactionBtn').addEventListener('click',()=>{
+    console.log('hey')
+    document.getElementById('popupContainer').style.display = 'flex';
+  })
 }
 
 //Update UI
@@ -165,6 +173,13 @@ function updateTransactions(){
     transactionsRows.appendChild(transactionRow);
   }
   updateElement('transactions', transactionsRows);
+}
+
+function addPopup(){
+  const template = document.getElementById('popup');
+  const popup = template.content.cloneNode(true);
+  
+  document.getElementById('app').appendChild(popup)
 }
 
 //Routing
