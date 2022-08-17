@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
 </head>
 
-<body>
+<body aria-haspopup="dialog">
     <!-- This is where you'll work -->
     <div class="container">
         <div id="app">Loading...</div>
@@ -79,10 +79,10 @@
     </template>
 
     <template id="popup">
-        <div id="popupContainer">
-            <section id="popupContent">
+        <div id="popupContainer" role="dialog" aria-modal="true" aria-live="assertive" aria-labelledby="modal-title">
+            <section id="popupContent" class="modal">
                 <h2>Add Transaction</h2>
-                <button id="closePupup">Close</button>
+                <button id="closePupup" aria-label="Close">Close</button>
             </section>
         </div>
     </template>

@@ -185,7 +185,8 @@ thead{
     justify-content: center;
     align-items: center;
     background-color: rgba(51, 51, 51, 0.25);
-    display: none;
+    visibility: hidden;
+    transition: all .2s ease;
 }
 
 #popupContent{
@@ -193,4 +194,8 @@ thead{
     max-width: 400px;
     padding: 1rem;
     border-radius: 10px;
+}
+
+#closePupup{
+    transition: none;
 }

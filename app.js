@@ -124,13 +124,7 @@ async function refresh() {
   }
   updateTransactions();
   addPopup()
-  document.getElementById('closePupup').addEventListener('click',()=>{
-    document.getElementById('popupContainer').style.display = 'none';
-  })
-  document.getElementById('newTransactionBtn').addEventListener('click',()=>{
-    console.log('hey')
-    document.getElementById('popupContainer').style.display = 'flex';
-  })
+  setModalEvents()
 }
 
 //Update UI
@@ -182,6 +176,51 @@ function addPopup(){
   document.getElementById('app').appendChild(popup)
 }
 
+function openModal(){
+  document.getElementById('popupContainer').style.visibility = 'visible';
+  document.querySelector('.modal button').focus();
+
+  setElementBeforeModal(true)
+}
+
+function closeModal(){
+  document.getElementById('popupContainer').style.visibility = 'hidden';
+  document.getElementById('newTransactionBtn').focus();
+  
+  setElementBeforeModal(false)
+}
+
+function setElementBeforeModal(value){
+  const nodesE = [...document.getElementById('app').childNodes]
+                                      .filter(e => e.id != "popupContainer")
+                                      
+  nodesE.forEach( e => { 
+      e.inert = value ; 
+      if(e.setAttribute){
+        e.setAttribute('aria-hidden',value)
+      }
+  })
+}
+
+function setModalEvents(){
+  document.getElementById('closePupup').addEventListener('click',()=>{
+    closeModal()
+  })
+
+  document.getElementById('newTransactionBtn').addEventListener('click',()=>{
+    openModal()
+  })
+  document.getElementById('popupContainer').addEventListener('click',(e)=>{
+    if(e.target.id === 'popupContainer'){
+      closeModal()
+    }
+  })
+  window.addEventListener('keydown',(e)=>{
+    if(e.key === 'Escape') {
+      closeModal()
+    }
+  })
+}
 //Routing
 
 function onLinkClick(event) {
