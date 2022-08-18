@@ -106,7 +106,26 @@ async function addTransaction(){
   }
   const result = await sendRequest(url,requestBody);
 
-  console.log(result)
+  if (result.error) {
+    if (result.error === 'Transaction already exists') {
+      //updateElement('usernameError', result.error);
+    }
+    return console.log("An error occurred:", result.error);
+  }
+
+  console.log("Tranaction created!", result);
+
+  const newData = {
+    ...state.account,
+    transactions: [
+      ...state.account.transactions,
+      result
+    ]
+  }
+
+  updateState('account', newData);
+  updateTransactions()
+  closeModal()
 }
 
 function logout(event = null) {
@@ -205,6 +224,8 @@ function closeModal(){
   document.getElementById('popupContainer').style.visibility = 'hidden';
   document.getElementById('newTransactionBtn').focus();
   
+  //Reset The Form
+  document.getElementById('transactionForm').reset()
   setElementBeforeModal(false)
 }
 
