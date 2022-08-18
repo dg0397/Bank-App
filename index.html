@@ -82,7 +82,18 @@
         <div id="popupContainer" role="dialog" aria-modal="true" aria-live="assertive" aria-labelledby="modal-title">
             <section id="popupContent" class="modal">
                 <h2>Add Transaction</h2>
-                <button id="closePupup" aria-label="Close">Close</button>
+                <form id="transactionForm" action="javascript:addTransaction()">
+                    <label for="date">Date (required)</label>
+                    <input id="date" name="date" type="date" required>
+                    <label for="objectValue">Object (required)</label>
+                    <input id="objectValue" name="objectValue" type="text" required>
+                    <label for="amount">Amount (Use negative value for debit)(required)</label>
+                    <input id="amount" name="amount" type="number" value=0 required>
+                    <div class="btnContainer">
+                        <button type="reset" id="closePupup" aria-label="Close">Cancel</button>
+                        <button id="addData">Ok</button>
+                    </div>
+                </form>
             </section>
         </div>
     </template>

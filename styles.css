@@ -181,6 +181,7 @@ thead{
     left: 0;
     width: 100vw;
     height: 100vh;
+    padding: .5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -192,10 +193,22 @@ thead{
 #popupContent{
     background-color: white;
     max-width: 400px;
+    min-width: 300px;
     padding: 1rem;
     border-radius: 10px;
 }
 
 #closePupup{
+    transition: none;
+}
+
+.btnContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btnContainer button{
+    margin: 0.75rem 0 .75rem .5rem;
+    width: auto;
     transition: none;
 }
