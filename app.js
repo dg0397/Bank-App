@@ -91,6 +91,24 @@ async function sendRequest(url,body = {}) {
   }
 }
 
+async function addTransaction(){
+  const transactionForm = document.getElementById('transactionForm');
+  const formData = new FormData(transactionForm);
+  const data = Object.fromEntries(formData);
+  const jsonData = JSON.stringify(data);
+  const url = API_BASE_URL + encodeURIComponent(state.account.user) + "/transactions";
+  const requestBody = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: jsonData,
+  }
+  const result = await sendRequest(url,requestBody);
+
+  console.log(result)
+}
+
 function logout(event = null) {
   if(event) event.preventDefault();
   updateState('account', null);
