@@ -214,19 +214,26 @@ function addPopup(){
 }
 
 function openModal(){
+  updateState('activeElement',document.activeElement);
+  
   document.getElementById('popupContainer').style.visibility = 'visible';
-  document.querySelector('.modal button').focus();
-
+  focusElement(document.querySelector('.modal button'))
   setElementBeforeModal(true)
+}
+
+function focusElement(element){
+  setTimeout(()=>{
+    element.focus();
+  },100)
 }
 
 function closeModal(){
   document.getElementById('popupContainer').style.visibility = 'hidden';
-  document.getElementById('newTransactionBtn').focus();
+  setElementBeforeModal(false)
+  focusElement(state.activeElement);
   
   //Reset The Form
   document.getElementById('transactionForm').reset()
-  setElementBeforeModal(false)
 }
 
 function setElementBeforeModal(value){
