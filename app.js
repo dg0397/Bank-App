@@ -222,9 +222,7 @@ function openModal(){
 }
 
 function focusElement(element){
-  setTimeout(()=>{
-    element.focus();
-  },100)
+  element.focus();
 }
 
 function closeModal(){
