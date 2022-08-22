@@ -211,3 +211,11 @@ thead{
     width: auto;
     transition: none;
 }
+
+.error{
+    color: red;
+    width: 80%;
+    margin: 0.5rem auto;
+    font-style: italic;
+    font-size: 1rem;
+}

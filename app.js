@@ -108,7 +108,7 @@ async function addTransaction(){
 
   if (result.error) {
     if (result.error === 'Transaction already exists') {
-      //updateElement('usernameError', result.error);
+      return updateElement('transactionnError', result.error ); 
     }
     return console.log("An error occurred:", result.error);
   }
