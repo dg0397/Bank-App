@@ -8,19 +8,22 @@ GET http://localhost:5000/api/
 POST http://localhost:5000/api/accounts/
 Content-Type: application/x-www-form-urlencoded
 
-user=sinedied&currency=$&balance=50
+user=sinedied&currency=$&balance=50&password=123456789
 
 ###
 
-GET http://localhost:5000/api/accounts/sinedied
+GET http://localhost:5000/api/accounts/635af661ec0fa11715ccd6cf
 
 ###
 
-DELETE http://localhost:5000/api/accounts/sinedied
+GET http://localhost:5000/api/accounts/635af661ec0fa11715ccd6cf/transactions
+###
+
+DELETE http://localhost:5000/api/accounts/635af661ec0fa11715ccd6cf
 
 ###
 
-POST http://localhost:5000/api/accounts/sinedied/transactions
+POST http://localhost:5000/api/accounts/635af661ec0fa11715ccd6cf/transactions
 Content-Type: application/json
 
 {

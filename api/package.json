@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Bank API",
   "private": true,
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "lint": "eslint",
-    "format": "prettier --single-quote --write *.js"
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "lint": "npx standard --fix",
+    "test": "cross-env NODE_ENV=test jest -- tests/blog_api.test.js --verbose --runInBand --forceExit --detectOpenHandles"
   },
   "keywords": [],
   "author": {
@@ -16,14 +17,29 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^7.5.0",
-    "prettier": "^2.0.5",
-    "supertest": "^6.2.4"
+    "cross-env": "^7.0.3",
+    "jest": "^29.2.2",
+    "nodemon": "^2.0.20",
+    "standard": "^17.0.0",
+    "supertest": "^6.3.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testTimeout": 60000
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "dotenv": "^16.0.3",
+    "express": "^4.17.1",
+    "mongoose": "^6.7.0",
+    "mongoose-unique-validator": "^3.1.0"
   },
   "engines": {
     "node": ">=10"
